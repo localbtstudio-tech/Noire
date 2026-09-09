@@ -32,6 +32,7 @@ html {
 body {
   width: 100%;
   min-height: 100%;
+
   overflow-x: hidden;
 
   background: var(--bg);
@@ -822,4 +823,19 @@ a {
   .cursor-dot {
     display: none;
   }
+}
+
+/* ========================================
+   FOOTER — VERTICAL END
+======================================== */
+
+.horizontal-wrapper {
+  height: auto;
+}
+
+.footer {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100vh;
+  flex: none;
 }

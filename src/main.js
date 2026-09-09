@@ -24,16 +24,12 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 // ========================================
-// NOIRÉ — Application
+// APP MARKUP
 // ========================================
 
 const app = document.querySelector("#app");
 
 app.innerHTML = `
-
-
-
-
   <header class="nav">
     <a href="#" class="logo">NOIRÉ</a>
 
@@ -52,19 +48,14 @@ app.innerHTML = `
 
         <div class="hero-content">
           <p class="eyebrow">ATELIER NOIRÉ</p>
-
           <h1>NOIRÉ</h1>
-
-          <p class="hero-subtitle">
-            WEAR THE UNEXPECTED
-          </p>
+          <p class="hero-subtitle">WEAR THE UNEXPECTED</p>
         </div>
 
         <div class="hero-image image-placeholder">
           LOOK 01
         </div>
       </section>
-
 
       <!-- MANIFESTO -->
       <section class="panel manifesto">
@@ -79,7 +70,6 @@ app.innerHTML = `
         </div>
       </section>
 
-
       <!-- COLLECTION -->
       <section class="panel collection">
         <div class="section-heading">
@@ -88,31 +78,22 @@ app.innerHTML = `
         </div>
 
         <div class="collection-grid">
-
           <article class="fashion-card">
-            <div class="image-placeholder">
-              LOOK 01
-            </div>
+            <div class="image-placeholder">LOOK 01</div>
             <span>01 — OBSIDIAN</span>
           </article>
 
           <article class="fashion-card featured-card">
-            <div class="image-placeholder">
-              LOOK 02
-            </div>
+            <div class="image-placeholder">LOOK 02</div>
             <span>02 — SILHOUETTE</span>
           </article>
 
           <article class="fashion-card">
-            <div class="image-placeholder">
-              LOOK 03
-            </div>
+            <div class="image-placeholder">LOOK 03</div>
             <span>03 — NOCTURNE</span>
           </article>
-
         </div>
       </section>
-
 
       <!-- FEATURED -->
       <section class="panel featured">
@@ -120,19 +101,13 @@ app.innerHTML = `
 
         <div class="featured-copy">
           <p class="eyebrow">THE PIECE</p>
-
-          <h2>
-            FORM<br>
-            IN<br>
-            MOTION
-          </h2>
+          <h2>FORM<br>IN<br>MOTION</h2>
         </div>
 
         <div class="featured-product image-placeholder">
           FEATURED PIECE
         </div>
       </section>
-
 
       <!-- ATELIER -->
       <section class="panel atelier">
@@ -144,15 +119,9 @@ app.innerHTML = `
 
         <div class="atelier-copy">
           <p class="eyebrow">THE ATELIER</p>
-
-          <h2>
-            CRAFTED<br>
-            IN<br>
-            SILENCE.
-          </h2>
+          <h2>CRAFTED<br>IN<br>SILENCE.</h2>
         </div>
       </section>
-
 
       <!-- EDITORIAL -->
       <section class="panel editorial">
@@ -163,22 +132,11 @@ app.innerHTML = `
         </div>
 
         <div class="editorial-images">
-
-          <div class="editorial-image image-placeholder">
-            01
-          </div>
-
-          <div class="editorial-image image-placeholder">
-            02
-          </div>
-
-          <div class="editorial-image image-placeholder">
-            03
-          </div>
-
+          <div class="editorial-image image-placeholder">01</div>
+          <div class="editorial-image image-placeholder">02</div>
+          <div class="editorial-image image-placeholder">03</div>
         </div>
       </section>
-
 
       <!-- STORY -->
       <section class="panel story">
@@ -199,25 +157,19 @@ app.innerHTML = `
         </div>
       </section>
 
-
       <!-- FINAL COLLECTION -->
       <section class="panel final-collection">
         <span class="section-number">08 / 10</span>
 
         <div class="final-title">
           <p class="eyebrow">NEW EDITION</p>
-
-          <h2>
-            NOIRÉ<br>
-            2026
-          </h2>
+          <h2>NOIRÉ<br>2026</h2>
         </div>
 
         <div class="final-image image-placeholder">
           NEW EDITION
         </div>
       </section>
-
 
       <!-- CTA -->
       <section class="panel cta">
@@ -237,44 +189,32 @@ app.innerHTML = `
         </div>
       </section>
 
-
-      <!-- FOOTER -->
-      <footer class="panel footer">
-        <span class="section-number">10 / 10</span>
-
-        <div class="footer-top">
-
-          <div class="footer-logo">
-            NOIRÉ
-          </div>
-
-          <div class="footer-links">
-            <a href="#">INSTAGRAM</a>
-            <a href="#">CONTACT</a>
-            <a href="#">LEGAL</a>
-          </div>
-
-        </div>
-
-        <div class="footer-bottom">
-          <span>PARIS — 2026</span>
-          <span>© NOIRÉ</span>
-        </div>
-      </footer>
-
     </div>
+
+    <!-- FOOTER — OUTSIDE HORIZONTAL TRACK -->
+    <footer class="footer">
+      <span class="section-number">10 / 10</span>
+
+      <div class="footer-top">
+        <div class="footer-logo">NOIRÉ</div>
+
+        <div class="footer-links">
+          <a href="#">INSTAGRAM</a>
+          <a href="#">CONTACT</a>
+          <a href="#">LEGAL</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>PARIS — 2026</span>
+        <span>© NOIRÉ</span>
+      </div>
+    </footer>
   </main>
 `;
 
 // ========================================
-// HORIZONTAL SCROLL
-// ========================================
-
-const wrapper = document.querySelector(".horizontal-wrapper");
-
-
-// ========================================
-// IMAGE SYSTEM
+// IMAGE SOURCES
 // ========================================
 
 const imageSources = {
@@ -321,54 +261,34 @@ Object.entries(imageSources).forEach(([selector, source]) => {
   element.style.backgroundPosition = "center";
 });
 
+// ========================================
+// HORIZONTAL SCROLL
+// ========================================
 
+const wrapper = document.querySelector(".horizontal-wrapper");
 const track = document.querySelector(".horizontal-track");
 
 const getScrollDistance = () => {
   return track.scrollWidth - window.innerWidth;
 };
 
-gsap.to(track, {
+const horizontalTween = gsap.to(track, {
   x: () => -getScrollDistance(),
-
   ease: "none",
 
   scrollTrigger: {
     trigger: wrapper,
-
     start: "top top",
-
     end: () => `+=${getScrollDistance()}`,
-
     pin: true,
-
     scrub: 1,
-
     invalidateOnRefresh: true,
   },
 });
 
 // ========================================
-// REFRESH
-// ========================================
-
-window.addEventListener("load", () => {
-  ScrollTrigger.refresh();
-});
-
-window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
-});
-
-// ========================================
-// NOIRÉ — CINEMATIC ANIMATIONS
-// ========================================
-
-const sections = gsap.utils.toArray(".panel");
-
-// ----------------------------------------
 // HERO
-// ----------------------------------------
+// ========================================
 
 const heroTitle = document.querySelector(".hero h1");
 const heroImage = document.querySelector(".hero-image");
@@ -446,14 +366,11 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
+// ========================================
 // MANIFESTO
-// ----------------------------------------
+// ========================================
 
-const manifestoWords = gsap.utils.toArray(
-  ".manifesto-text p"
-);
+const manifestoWords = gsap.utils.toArray(".manifesto-text p");
 
 gsap.fromTo(
   manifestoWords,
@@ -480,14 +397,11 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
+// ========================================
 // COLLECTION
-// ----------------------------------------
+// ========================================
 
-const fashionCards = gsap.utils.toArray(
-  ".fashion-card"
-);
+const fashionCards = gsap.utils.toArray(".fashion-card");
 
 gsap.fromTo(
   fashionCards,
@@ -512,10 +426,9 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
-// FEATURED PIECE
-// ----------------------------------------
+// ========================================
+// FEATURED
+// ========================================
 
 gsap.fromTo(
   ".featured-copy",
@@ -563,10 +476,9 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
-// ATELIER — CORNER MOTION
-// ----------------------------------------
+// ========================================
+// ATELIER
+// ========================================
 
 gsap.fromTo(
   ".atelier-image",
@@ -618,14 +530,11 @@ gsap.fromTo(
   }
 );
 
+// ========================================
+// EDITORIAL
+// ========================================
 
-// ----------------------------------------
-// EDITORIAL PARALLAX
-// ----------------------------------------
-
-const editorialImages = gsap.utils.toArray(
-  ".editorial-image"
-);
+const editorialImages = gsap.utils.toArray(".editorial-image");
 
 editorialImages.forEach((image, index) => {
   gsap.fromTo(
@@ -649,10 +558,9 @@ editorialImages.forEach((image, index) => {
   );
 });
 
-
-// ----------------------------------------
+// ========================================
 // STORY
-// ----------------------------------------
+// ========================================
 
 gsap.fromTo(
   ".story-content h2",
@@ -698,10 +606,9 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
+// ========================================
 // FINAL COLLECTION
-// ----------------------------------------
+// ========================================
 
 gsap.fromTo(
   ".final-title",
@@ -753,10 +660,9 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
-// FINAL CTA
-// ----------------------------------------
+// ========================================
+// CTA
+// ========================================
 
 gsap.fromTo(
   ".cta-content",
@@ -780,33 +686,8 @@ gsap.fromTo(
   }
 );
 
-
-// ----------------------------------------
-// FOOTER
-// ----------------------------------------
-
-gsap.fromTo(
-  ".footer-logo",
-  {
-    x: -250,
-    opacity: 0,
-  },
-  {
-    x: 0,
-    opacity: 1,
-
-    scrollTrigger: {
-      trigger: ".footer",
-      containerAnimation: horizontalTween,
-      start: "left 90%",
-      end: "center center",
-      scrub: 1,
-    },
-  }
-);
-
 // ========================================
-// IMAGE REVEAL SYSTEM
+// IMAGE REVEAL + PARALLAX
 // ========================================
 
 const realImages = gsap.utils.toArray(".real-image");
@@ -857,12 +738,10 @@ realImages.forEach((image, index) => {
 
 const cursor = document.createElement("div");
 cursor.className = "custom-cursor";
-
 document.body.appendChild(cursor);
 
 const cursorDot = document.createElement("div");
 cursorDot.className = "cursor-dot";
-
 document.body.appendChild(cursorDot);
 
 let mouseX = window.innerWidth / 2;
@@ -917,3 +796,14 @@ interactiveElements.forEach((element) => {
   });
 });
 
+// ========================================
+// REFRESH
+// ========================================
+
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
