@@ -193,7 +193,7 @@ app.innerHTML = `
 
     <!-- FOOTER — OUTSIDE HORIZONTAL TRACK -->
     <footer class="footer">
-      <span class="section-number">10 / 10</span>
+      
 
       <div class="footer-top">
         <div class="footer-logo">NOIRÉ</div>
