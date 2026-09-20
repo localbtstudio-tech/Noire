@@ -49,11 +49,12 @@ jobs:
       pages: write
       id-token: write
 
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: noire-pages    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: noire-pages
